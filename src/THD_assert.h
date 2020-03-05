@@ -35,13 +35,14 @@ void thd_assert(bool ARGS, const char* label, const char* function)
 		}
 		// Put current function name in memory
 		strncpy(THD_assert_previous_function, function, strlen(function) + 1);
-		printf("Unit testing:\n");
+		printf("THD asserts:\n");
+		printf(" | \n");
 		printf(" ├>\x1b[;1m Function %s\x1b[0m\n", function);
 	}
 	else
 	{
 		// Get back to the line about the previous function totals and deletes it
-		printf("\033[2A\033[2K\r");
+		printf("\033[3A\033[2K\r");
 	}
 	
 	// Check if I am in same function as previous assert
@@ -50,6 +51,7 @@ void thd_assert(bool ARGS, const char* label, const char* function)
 		// I am in a different function
 		// Print the old function-local totals
 		printf("\033[2K\r |    └> \x1b[34;1m[RESULTS]\x1b[0m %d tests performed: \x1b[32;1m%d successes\x1b[0m and \x1b[31;1m%d failures\x1b[0m.\n", THD_assert_my_number_of_tests, THD_assert_my_number_of_successes, THD_assert_my_number_of_tests - THD_assert_my_number_of_successes);
+		printf("\033[2K\r |\n");
 
 		// Store the new function name 
 		THD_assert_previous_function = (char*)realloc(THD_assert_previous_function, sizeof(char) * (strlen(function) + 1));
@@ -85,6 +87,7 @@ void thd_assert(bool ARGS, const char* label, const char* function)
 	// Print the old function-local totals
 	THD_assert_my_number_of_tests++;
 	printf("\033[2K\r |    └> \x1b[34;1m[RESULTS]\x1b[0m %d tests performed: \x1b[32;1m%d successes\x1b[0m and \x1b[31;1m%d failures\x1b[0m.\n", THD_assert_my_number_of_tests, THD_assert_my_number_of_successes, THD_assert_my_number_of_tests - THD_assert_my_number_of_successes);
+	printf("\033[2K\r |\n");
 
 	// Print the general totals in case it is the last assert
 	THD_assert_number_of_tests++;
