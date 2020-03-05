@@ -11,6 +11,7 @@ void test_component_B()
 {
 	THD_assert(1 == 1);
 	THD_assert(2 == 1);
+	THD_assert(3 == 3);
 }
 
 int main()
