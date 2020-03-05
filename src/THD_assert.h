@@ -9,14 +9,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdbool.h>
 
 int THD_assert_number_of_tests = 0; /* Total number of tests run */
 int THD_assert_number_of_successes = 0; /* Total number of tests that succeeded*/
 int THD_assert_my_number_of_tests = 0;
 int THD_assert_my_number_of_successes = 0;
 char* THD_assert_previous_function = NULL; /* Function in which the previous assert was performed. */
-
-#define THD_assert(ARGS) thd_assert(ARGS, #ARGS, __func__)
 
 /**
  * @param[in] function The name of the function from which the assert is called.
@@ -91,5 +90,7 @@ void thd_assert(bool ARGS, const char* label, const char* function)
 	THD_assert_number_of_tests++;
 	printf(" └> \x1b[34;1m[RESULTS]\x1b[0m %d tests performed: \x1b[32;1m%d successes\x1b[0m and \x1b[31;1m%d failures\x1b[0m.\n", THD_assert_number_of_tests, THD_assert_number_of_successes, THD_assert_number_of_tests - THD_assert_number_of_successes);
 }
+
+#define THD_assert(ARGS) thd_assert(ARGS, #ARGS, __func__);
 
 #endif
