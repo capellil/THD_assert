@@ -3,8 +3,8 @@
  * @author Ludovic Capelli
  **/
 
-#ifndef THD_ASSERT_HPP_INCLUDED
-#define THD_ASSERT_HPP_INCLUDED
+#ifndef THD_ASSERT_H_INCLUDED
+#define THD_ASSERT_H_INCLUDED
 
 #include <stdio.h>
 #include <stdlib.h>
