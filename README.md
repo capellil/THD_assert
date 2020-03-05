@@ -31,6 +31,12 @@ int main()
   test_component_B();
 }
 ```
+### Screenshot
+
+<p>
+  <img src="images/assert.png" alt="drawing" width="800"/>
+</p>
+
 ## Same example, with `THD_assert` instead
 ### Code
 ```C
@@ -56,3 +62,9 @@ int main()
   test_component_B();
 }
 ```
+
+### Screenshot
+ 
+<p>
+  <img src="images/thd_assert.png" alt="drawing" width="550"/>
+</p>
