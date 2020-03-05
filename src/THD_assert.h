@@ -1,5 +1,5 @@
 /**
- * @file thd_unit_test.hpp
+ * @file THD_assert.hpp
  * @author Ludovic Capelli
  **/
 
