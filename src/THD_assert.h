@@ -27,14 +27,16 @@ void THD_assert_function(bool ARGS, const char* label, const char* function, int
 	{
 		// I am the first assert in the entire program.
 		// Allocate the memory for current function name.
-		THD_assert_previous_function = (char*)malloc(sizeof(char) * (strlen(function) + 1));
+		size_t THD_assert_previous_function_length = strlen(function) + 1;
+		THD_assert_previous_function = (char*)malloc(sizeof(char) * THD_assert_previous_function_length);
 		if(THD_assert_previous_function == NULL)
 		{
 			printf("Could not allocate the name of the function.\n");
 			exit(EXIT_FAILURE);
 		}
 		// Put current function name in memory
-		strncpy(THD_assert_previous_function, function, strlen(function) + 1);
+		strncpy(THD_assert_previous_function, function, THD_assert_previous_function_length);
+		THD_assert_previous_function[THD_assert_previous_function_length - 1] = '\0';
 		printf("THD asserts:\n");
 		printf(" | \n");
 		printf(" ├>\x1b[;1m %s\x1b[0m\n", function);
@@ -54,14 +56,16 @@ void THD_assert_function(bool ARGS, const char* label, const char* function, int
 		printf("\033[2K\r |\n");
 
 		// Store the new function name 
-		THD_assert_previous_function = (char*)realloc(THD_assert_previous_function, sizeof(char) * (strlen(function) + 1));
+		size_t THD_assert_previous_function_length = strlen(function) + 1;
+		THD_assert_previous_function = (char*)realloc(THD_assert_previous_function, sizeof(char) * THD_assert_previous_function_length);
 		if(THD_assert_previous_function == NULL)
 		{
 			printf("Could not reallocate the name of the function.\n");
 			exit(EXIT_FAILURE);
 		}
 		// Put current function name in memory
-		strncpy(THD_assert_previous_function, function, strlen(function) + 1);
+		strncpy(THD_assert_previous_function, function, THD_assert_previous_function_length);
+		THD_assert_previous_function[THD_assert_previous_function_length - 1] = '\0';
 
 		THD_assert_my_number_of_successes = 0;
 		THD_assert_my_number_of_tests= 0;
