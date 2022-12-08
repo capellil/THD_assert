@@ -39,7 +39,7 @@ void THD_assert_function(bool ARGS, const char* label, const char* function, int
 		THD_assert_previous_function[THD_assert_previous_function_length - 1] = '\0';
 		printf("THD asserts:\n");
 		printf(" | \n");
-		printf(" ├>\x1b[;1m %s\x1b[0m\n", function);
+		printf(" ├>\x1b[1m %s\x1b[0m\n", function);
 	}
 	else
 	{
