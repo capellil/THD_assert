@@ -1,5 +1,7 @@
 #!/bin/bash
 
+INC=-Iinclude
+
 default: all
 
 all: create_directory classic_assert thd_assert
@@ -11,7 +13,7 @@ classic_assert:
 	gcc -o bin/main_classic_assert src/main_classic_assert.c
 
 thd_assert:
-	gcc -o bin/main_thd_assert src/main_thd_assert.c
+	gcc -o bin/main_thd_assert src/main_thd_assert.c $(INC)
 
 clean:
 	rm -rf bin
